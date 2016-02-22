@@ -1,0 +1,41 @@
+h6{
+	color: blue;
+}
+
+
+.cell{
+	height: 100px;
+	width: 100px;
+	align-items: center;
+}
+
+.tac {
+	border-left: 5px solid black; 
+	border-right: 5px solid black;
+}
+
+.tic {
+
+	border-top: 5px solid black;
+	border-bottom: 5px solid black;
+}
+
+.button {
+	width: 150px;
+	height: 50px;
+	background-color: #FF3333
+	
+}
+.abutton{
+	width:50px;
+	height:25px;
+	background-color: #FF3333;
+}
+
+.notvisible {
+	visibility: hidden;
+}
+
+.visible {
+	visibility: visible;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<script src = "./angular.min.js"></script>
+<script src = "./ctrl.js"> </script>
+</head>
+<body ng-app = "remcab" ng-controller = "remCtrl">
+    <p>Game Size: <input type="number" min ="3" step ="2" ng-model ="game.size">  </p>
+    
+    <h3>{{game.message}}</h3>    
+<table id = "board"> 
+    <tr ng-repeat = "row in game.board track by $index">
+        <td ng-repeat="cell in row track by $index" class="cell"><img id="myimage- cpos + rpos " ng-click="processMove($parent.$index,$index)" class="cell">({{$parent.$index}},{{$index}}):{{getplayernames(game.board[$parent.$index][$index])}}</td>
+    </tr>
+</table>
+
+</body>
+</html>
