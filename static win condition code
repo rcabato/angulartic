@@ -1,0 +1,128 @@
+function cleargamestate() {
+    var i = 0 
+    var j = 0          
+    for (test in $scope.gamestate.board) {
+    $scope.gamestate.board[i][j] = 0;
+    updateBoardAtPosition(i,j);
+    i++;
+    j++;
+    }
+            var inb = document.getElementById("imabutton")
+            inb.className = "notvisible button";               
+        }   
+
+
+/* function checktie() {
+        var i = 0;
+        var j = 0;
+        for (test in $scope.gamestate.board) {
+            if ($scope.gamestate.board[i][j] != 0){
+            dotie();
+            i++;
+            j++;
+            }    
+            else changeturn();
+        }   
+    }*/
+    /*function checkwin() {                                   
+        if ($scope.gamestate.board[0][0]==$scope.gamestate.board[0][1] && $scope.gamestate.board[0][1]==$scope.gamestate.board[0][2] && $scope.gamestate.board[0][2]!=0||
+            $scope.gamestate.board[1][0]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]!=0||
+            $scope.gamestate.board[2][0]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]!=0||
+            $scope.gamestate.board[0][0]==$scope.gamestate.board[1][0] && $scope.gamestate.board[1][0]==$scope.gamestate.board[2][0] && $scope.gamestate.board[2][0]!=0||
+            $scope.gamestate.board[0][1]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]!=0||
+            $scope.gamestate.board[0][2]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]!=0||
+            $scope.gamestate.board[0][0]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]!=0||
+            $scope.gamestate.board[0][2]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[2][0] && $scope.gamestate.board[2][0]!=0) {
+            dowin();    
+            } 
+            else {
+                checktie(); 
+                changeturn();
+                
+            }
+    }
+        function checkwin5() {                                   
+            if ($scope.gamestate.board[0][0]==$scope.gamestate.board[0][1] && $scope.gamestate.board[0][1]==$scope.gamestate.board[0][2] && $scope.gamestate.board[0][2]==$scope.gamestate.board[0][3] && $scope.gamestate.board[0][3]!=0 ||
+                $scope.gamestate.board[0][1]==$scope.gamestate.board[0][2] && $scope.gamestate.board[0][2]==$scope.gamestate.board[0][3] && $scope.gamestate.board[0][3]==$scope.gamestate.board[0][4] && $scope.gamestate.board[0][4]!=0 ||
+                $scope.gamestate.board[1][0]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[1][3] && $scope.gamestate.board[1][3]!=0 ||
+                $scope.gamestate.board[1][1]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[1][3] && $scope.gamestate.board[1][3]==$scope.gamestate.board[1][4] && $scope.gamestate.board[1][4]!=0 ||
+                $scope.gamestate.board[2][0]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]!=0 ||
+                $scope.gamestate.board[2][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]==$scope.gamestate.board[2][4] && $scope.gamestate.board[2][4]!=0 ||
+                $scope.gamestate.board[3][0]==$scope.gamestate.board[3][1] && $scope.gamestate.board[3][1]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]!=0 ||
+                $scope.gamestate.board[3][1]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]==$scope.gamestate.board[3][4] && $scope.gamestate.board[3][4]!=0 ||
+                $scope.gamestate.board[4][0]==$scope.gamestate.board[4][1] && $scope.gamestate.board[4][1]==$scope.gamestate.board[4][2] && $scope.gamestate.board[4][2]==$scope.gamestate.board[4][3] && $scope.gamestate.board[4][3]!=0 ||
+                $scope.gamestate.board[4][1]==$scope.gamestate.board[4][2] && $scope.gamestate.board[4][2]==$scope.gamestate.board[4][3] && $scope.gamestate.board[4][3]==$scope.gamestate.board[4][4] && $scope.gamestate.board[4][4]!=0 ||
+                //columns
+                $scope.gamestate.board[0][0]==$scope.gamestate.board[1][0] && $scope.gamestate.board[1][0]==$scope.gamestate.board[2][0] && $scope.gamestate.board[2][0]==$scope.gamestate.board[3][0] && $scope.gamestate.board[3][0]!=0 ||
+                $scope.gamestate.board[1][0]==$scope.gamestate.board[2][0] && $scope.gamestate.board[2][0]==$scope.gamestate.board[3][0] && $scope.gamestate.board[3][0]==$scope.gamestate.board[4][0] && $scope.gamestate.board[4][0]!=0 ||
+                $scope.gamestate.board[0][1]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[3][1] && $scope.gamestate.board[3][1]!=0 ||
+                $scope.gamestate.board[1][1]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[3][1] && $scope.gamestate.board[3][1]==$scope.gamestate.board[4][1] && $scope.gamestate.board[4][1]!=0 ||
+                $scope.gamestate.board[0][2]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]!=0 ||
+                $scope.gamestate.board[1][2]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]==$scope.gamestate.board[4][2] && $scope.gamestate.board[4][2]!=0 ||
+                $scope.gamestate.board[0][3]==$scope.gamestate.board[1][3] && $scope.gamestate.board[1][3]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]!=0 ||
+                $scope.gamestate.board[1][3]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]==$scope.gamestate.board[4][3] && $scope.gamestate.board[4][3]!=0 ||
+                $scope.gamestate.board[0][4]==$scope.gamestate.board[1][4] && $scope.gamestate.board[1][4]==$scope.gamestate.board[2][4] && $scope.gamestate.board[2][4]==$scope.gamestate.board[3][4] && $scope.gamestate.board[3][4]!=0 ||
+                $scope.gamestate.board[1][4]==$scope.gamestate.board[2][4] && $scope.gamestate.board[2][4]==$scope.gamestate.board[3][4] && $scope.gamestate.board[3][4]==$scope.gamestate.board[4][4] && $scope.gamestate.board[4][4]!=0 ||
+
+                //diagonal
+                $scope.gamestate.board[0][0]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]!=0 ||
+                $scope.gamestate.board[1][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]==$scope.gamestate.board[4][4] && $scope.gamestate.board[4][4]!=0 ||
+                $scope.gamestate.board[3][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[1][3] && $scope.gamestate.board[1][3]==$scope.gamestate.board[0][4] && $scope.gamestate.board[0][4]!=0 ||
+                $scope.gamestate.board[4][0]==$scope.gamestate.board[3][1] && $scope.gamestate.board[3][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[1][3] && $scope.gamestate.board[1][3]!=0 ||
+                $scope.gamestate.board[0][1]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]==$scope.gamestate.board[3][4] && $scope.gamestate.board[3][4]!=0 ||
+                $scope.gamestate.board[1][0]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]==$scope.gamestate.board[4][3] && $scope.gamestate.board[4][3]!=0 ||
+                $scope.gamestate.board[0][3]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[0][3] && $scope.gamestate.board[0][3]!=0 ||
+                $scope.gamestate.board[4][1]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]==$scope.gamestate.board[1][4] && $scope.gamestate.board[1][4]!=0 ) {
+                dowin();    
+                } 
+                else {
+                    checktie5(); 
+                    changeturn();
+            $scope.gamestate.board[0][1]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]!=0||
+            $scope.gamestate.board[0][2]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]!=0||
+            $scope.gamestate.board[0][0]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]!=0||
+            $scope.gamestate.board[0][2]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[2][0] && $scope.gamestate.board[2][0]!=0) {
+            dowin();    
+            } 
+            else {
+                checktie(); 
+                changeturn();
+                
+            }
+    }
+        function checkwin5() {                                   
+            if ($scope.gamestate.board[0][0]==$scope.gamestate.board[0][1] && $scope.gamestate.board[0][1]==$scope.gamestate.board[0][2] && $scope.gamestate.board[0][2]==$scope.gamestate.board[0][3] && $scope.gamestate.board[0][3]!=0 ||
+                $scope.gamestate.board[0][1]==$scope.gamestate.board[0][2] && $scope.gamestate.board[0][2]==$scope.gamestate.board[0][3] && $scope.gamestate.board[0][3]==$scope.gamestate.board[0][4] && $scope.gamestate.board[0][4]!=0 ||
+                $scope.gamestate.board[1][0]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[1][3] && $scope.gamestate.board[1][3]!=0 ||
+                $scope.gamestate.board[1][1]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[1][3] && $scope.gamestate.board[1][3]==$scope.gamestate.board[1][4] && $scope.gamestate.board[1][4]!=0 ||
+                $scope.gamestate.board[2][0]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]!=0 ||
+                $scope.gamestate.board[2][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]==$scope.gamestate.board[2][4] && $scope.gamestate.board[2][4]!=0 ||
+                $scope.gamestate.board[3][0]==$scope.gamestate.board[3][1] && $scope.gamestate.board[3][1]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]!=0 ||
+                $scope.gamestate.board[3][1]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]==$scope.gamestate.board[3][4] && $scope.gamestate.board[3][4]!=0 ||
+                $scope.gamestate.board[4][0]==$scope.gamestate.board[4][1] && $scope.gamestate.board[4][1]==$scope.gamestate.board[4][2] && $scope.gamestate.board[4][2]==$scope.gamestate.board[4][3] && $scope.gamestate.board[4][3]!=0 ||
+                $scope.gamestate.board[4][1]==$scope.gamestate.board[4][2] && $scope.gamestate.board[4][2]==$scope.gamestate.board[4][3] && $scope.gamestate.board[4][3]==$scope.gamestate.board[4][4] && $scope.gamestate.board[4][4]!=0 ||
+                //columns
+                $scope.gamestate.board[0][0]==$scope.gamestate.board[1][0] && $scope.gamestate.board[1][0]==$scope.gamestate.board[2][0] && $scope.gamestate.board[2][0]==$scope.gamestate.board[3][0] && $scope.gamestate.board[3][0]!=0 ||
+                $scope.gamestate.board[1][0]==$scope.gamestate.board[2][0] && $scope.gamestate.board[2][0]==$scope.gamestate.board[3][0] && $scope.gamestate.board[3][0]==$scope.gamestate.board[4][0] && $scope.gamestate.board[4][0]!=0 ||
+                $scope.gamestate.board[0][1]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[3][1] && $scope.gamestate.board[3][1]!=0 ||
+                $scope.gamestate.board[1][1]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[3][1] && $scope.gamestate.board[3][1]==$scope.gamestate.board[4][1] && $scope.gamestate.board[4][1]!=0 ||
+                $scope.gamestate.board[0][2]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]!=0 ||
+                $scope.gamestate.board[1][2]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]==$scope.gamestate.board[4][2] && $scope.gamestate.board[4][2]!=0 ||
+                $scope.gamestate.board[0][3]==$scope.gamestate.board[1][3] && $scope.gamestate.board[1][3]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]!=0 ||
+                $scope.gamestate.board[1][3]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]==$scope.gamestate.board[4][3] && $scope.gamestate.board[4][3]!=0 ||
+                $scope.gamestate.board[0][4]==$scope.gamestate.board[1][4] && $scope.gamestate.board[1][4]==$scope.gamestate.board[2][4] && $scope.gamestate.board[2][4]==$scope.gamestate.board[3][4] && $scope.gamestate.board[3][4]!=0 ||
+                $scope.gamestate.board[1][4]==$scope.gamestate.board[2][4] && $scope.gamestate.board[2][4]==$scope.gamestate.board[3][4] && $scope.gamestate.board[3][4]==$scope.gamestate.board[4][4] && $scope.gamestate.board[4][4]!=0 ||
+
+                //diagonal
+                $scope.gamestate.board[0][0]==$scope.gamestate.board[1][1] && $scope.gamestate.board[1][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]!=0 ||
+                $scope.gamestate.board[1][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[3][3] && $scope.gamestate.board[3][3]==$scope.gamestate.board[4][4] && $scope.gamestate.board[4][4]!=0 ||
+                $scope.gamestate.board[3][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[1][3] && $scope.gamestate.board[1][3]==$scope.gamestate.board[0][4] && $scope.gamestate.board[0][4]!=0 ||
+                $scope.gamestate.board[4][0]==$scope.gamestate.board[3][1] && $scope.gamestate.board[3][1]==$scope.gamestate.board[2][2] && $scope.gamestate.board[2][2]==$scope.gamestate.board[1][3] && $scope.gamestate.board[1][3]!=0 ||
+                $scope.gamestate.board[0][1]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]==$scope.gamestate.board[3][4] && $scope.gamestate.board[3][4]!=0 ||
+                $scope.gamestate.board[1][0]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]==$scope.gamestate.board[4][3] && $scope.gamestate.board[4][3]!=0 ||
+                $scope.gamestate.board[0][3]==$scope.gamestate.board[2][1] && $scope.gamestate.board[2][1]==$scope.gamestate.board[1][2] && $scope.gamestate.board[1][2]==$scope.gamestate.board[0][3] && $scope.gamestate.board[0][3]!=0 ||
+                $scope.gamestate.board[4][1]==$scope.gamestate.board[3][2] && $scope.gamestate.board[3][2]==$scope.gamestate.board[2][3] && $scope.gamestate.board[2][3]==$scope.gamestate.board[1][4] && $scope.gamestate.board[1][4]!=0 ) {
+                dowin();    
+                } 
+                else {
+                    checktie5(); 
